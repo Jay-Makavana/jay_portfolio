@@ -9,6 +9,7 @@ $(function() {
             event.preventDefault(); // prevent default submit behaviour
             // get values from FORM
             var name = $("input#name").val();
+            var subject = $("input#subject").val();
             var email = $("input#email").val();
             var message = $("textarea#message").val();
             var firstName = name; // For Success/Failure Message
@@ -22,7 +23,8 @@ $(function() {
                 data: {
                     name: name,
                     email: email,
-                    message: message
+                    message: message,
+                    subject: subject,
                 },
                 cache: false,
                 success: function() {
