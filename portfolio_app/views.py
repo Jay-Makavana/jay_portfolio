@@ -53,21 +53,18 @@ class home_view(TemplateView):
                             visitor.save()                       
                             
 
-                            email_text = f""" name : {FullName}
-                                            email : {Email_ID}
-                                            Subject : {Subject}
-                                            Message : {Message}
-                                        """
-                            email_textc = f"""Thank you {FullName}
-                                        I will contact you shortly
-                                        Regards,
-                                        Jay Makavana
-                                        """
+                            email_text = '<p>Name : {}</p>'.format(FullName)
+                            email_text += '<p>Email : {}</p>'.format(Email_ID)
+                            email_text += '<p>Subject : {}</p>'.format(Subject)
+                            email_text += '<p>Message : {}</p>'.format(Message)
+                            
+                            email_textc ='<p>Thank You {}</p>'.format(FullName)
+                            email_textc += '<p>I will contacy shortly<br/><br/>Regards,<br/>Jay Makavana</p>'
 
                             recipientsc = [visitor.email]
                             recipients = ["jay95makavana@gmail.com"]
-                            msg = MIMEText(email_text)
-                            msgc = MIMEText(email_textc)
+                            msg = MIMEText(email_text, 'html')
+                            msgc = MIMEText(email_textc, 'html')
                             msg["Subject"] = "Jay Portfolio"
                             msgc["Subject"] = "Jay Makavana"
                             msg["From"] = visitor.email
